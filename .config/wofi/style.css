@@ -1,0 +1,70 @@
+* {
+    all: initial;
+}
+
+window {
+    margin: 0px;
+    background-color: #1d3b53;
+    border-radius: 0px;
+    color: #e0def4;
+    font-family: 'Fira Code Nerd Font';
+    font-size: 14px;
+}
+
+#input {
+    margin: 5px;
+    border-radius: 0px;
+    border: none;
+    border-color: #b2ceee;
+    color: #d6deeb;
+    background-color: #315a7a;
+    box-shadow: none;    
+}
+
+#input image { 
+    padding: 10px;
+    color: #b2ceee; 
+}
+
+# input prompt {
+   color: #000000; 
+} 
+
+#inner-box {
+    margin: 5px;
+    border: none;
+    background-color: #1d3b53;
+    color: #191724;
+    border-radius: 0px;
+}
+
+#outer-box {
+    margin: 15px;
+    border: none;
+}
+
+#scroll {
+    margin: 0px;
+    border: none;
+}
+
+#text {
+    margin: 5px;
+    border: none;
+    color: #e0def4;
+} 
+
+#entry:selected {
+    background-color: #b2ceee;
+    color: #080808;
+    border-radius: 0px;
+    outline: none;
+}
+
+#entry:selected * {
+    color: #080808;
+}
+
+#entry image {
+    padding-right: 10px;
+}

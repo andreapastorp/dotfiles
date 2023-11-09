@@ -1,0 +1,69 @@
+@define-color redbright #ff5874;
+
+* {
+  all: initial;
+  border: none;
+  border-radius: 0;
+  font-family: firacode nerd font, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: white;
+  box-shadow: none;
+}
+
+window#waybar {
+  background: rgba(1, 22, 39,0.5);
+}
+
+tooltip {
+  background: rgb(1, 22, 39);
+}
+tooltip label {
+  color: white;
+}
+
+#workspaces {
+  margin: 0 20px 0 0;
+}
+
+#workspaces button {
+  padding: 0 20px 0 20px;
+}
+
+#workspaces button:hover {
+    background: rgba(178, 206, 238, 0.1);
+    border: none;
+    }
+
+#workspaces button.focused {
+	background: rgba(178, 206, 238, 0.3);
+	border-bottom: 3px solid rgba(178,206,238,1);
+    }
+
+#mode, #bluetooth, #pulseaudio, #backlight, #clock, #battery, #network {
+  padding: 0 10px;
+}
+
+#mode {
+	background: @redbright;
+	border-radius: 28;
+	margin: 5 25px 5 5;
+}
+
+@keyframes shake {
+    to {
+    	padding: 7px;
+    }
+}
+
+#battery.warning:not(.charging) {
+    color: @redbright;
+}
+
+#battery.critical:not(.charging) {
+    color: @redbright;
+    animation-name: shake;
+    animation-duration: 0.2s;
+    animation-timing-function:linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}

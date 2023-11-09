@@ -1,0 +1,62 @@
+{
+    "layer": "bottom",
+    "height": 28,
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-center": ["tray"],
+    "modules-right": ["battery", "bluetooth", "pulseaudio", "backlight", "network", "clock"],
+    "sway/window": {
+        "max-length": 50
+    },
+
+    "bluetooth": {
+      "format-connected": "",
+      "format": "󰂲",
+      "on-click": "blueman-manager"
+    },
+
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "default": ["", ""]
+        },
+    },
+
+    "backlight": {
+        "device": "acpi_video",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", ""],
+        "reverse-scrolling": true,
+        "on-scroll-up": "brightnessctl set 25%+",
+        "on-scroll-down": "brightnessctl set 25%-"
+    },
+
+    "battery": {
+      "states": {
+        "warning": 30,
+		    "critical": 15,
+	      },
+      "format": "{capacity}% {icon}",
+      "format-charging": "{capacity}% ",
+      "format-plugged": "{capacity}% ",
+      "format-icons": ["", "", "", "", ""]
+    },
+
+    "clock": {
+        "format": "{:%a, %d. %b  %H:%M}"
+    },
+
+    "network": {
+	"format-wifi": "{icon} {signalStrength}%",
+	"format-ethernet": "{ipaddr}/{cidr} 󰊗",
+	"format-disconnected": "󰤮",
+	"max-length": 50,
+	"format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"]
+    },
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    }
+}

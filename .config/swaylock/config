@@ -1,0 +1,30 @@
+image=~/.config/swaylock/background.jpeg
+
+daemonize
+
+indicator-caps-lock
+font=FiraCode Nerd Font
+font-size=24
+indicator-radius=80
+
+
+# colors
+inside-color=011627
+inside-clear-color=21c7a8
+inside-caps-lock-color=ecc48d
+inside-ver-color=82aaff
+inside-wrong-color=ff5874
+
+line-uses-inside
+
+ring-color=011627
+ring-clear-color=21c7a8
+ring-caps-lock-color=ecc48d
+ring-ver-color=82aaff
+ring-wrong-color=ff5874
+
+
+key-hl-color=21c7a8
+caps-lock-key-hl-color=21c7a8
+bs-hl-color=ff5874
+caps-lock-bs-hl-color=ff5874
