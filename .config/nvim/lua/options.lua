@@ -1,3 +1,6 @@
+-- Set <space> as leader key
+vim.g.mapleader = " "
+
 -- line numbers
 vim.o.nu = true
 vim.o.rnu = true

@@ -1,8 +1,8 @@
-require("keymaps")
+-- [[ Required files ]]
 require("options")
+require("keymaps")
 
 -- [[ Plugin Manager ]]
---
 -- Install lazy.nvim plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

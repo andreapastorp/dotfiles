@@ -5,7 +5,6 @@ return
         {
             'bluz71/vim-nightfly-colors',
             name = 'nightfly',
-
             priority = 1000,
             config = function()
                 vim.cmd.colorscheme 'nightfly'
@@ -13,7 +12,7 @@ return
         },
 
         -- Indent line guides
-        { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = {} },
+        { 'lukas-reineke/indent-blankline.nvim', main = 'ibl' },
 
         -- Status line
         { 
@@ -21,12 +20,7 @@ return
             config = function()
                 require('lualine').setup {
                     sections = {
-                        lualine_a = {'mode'},
-                        lualine_b = {'branch', 'diff', 'diagnostics'},
-                        lualine_c = {'filename'},
                         lualine_x = {'filetype'},
-                        lualine_y = {'progress'},
-                        lualine_z = {'location'}
                     },
                 }
             end,
@@ -37,7 +31,7 @@ return
         {
             'norcalli/nvim-colorizer.lua',
             config = function ()
-                require 'colorizer'.setup()
+                require('colorizer').setup()
             end,
         },
 
@@ -45,12 +39,12 @@ return
         {
             'petertriho/nvim-scrollbar', 
             config = function()
-                local colors = require("nightfly").palette
-                require("scrollbar").setup({
+                local colors = require('nightfly').palette
+                require('scrollbar').setup {
                     handle = {
                         color = colors.deep_blue,
                     },
-                })
+                }
             end,
         },
 
@@ -59,7 +53,7 @@ return
             'lewis6991/gitsigns.nvim',
             config = function()
                 require('gitsigns').setup()
-                require("scrollbar.handlers.gitsigns").setup()
+                require('scrollbar.handlers.gitsigns').setup()
             end,
         },
 
@@ -67,59 +61,56 @@ return
         {
             'nvim-treesitter/nvim-treesitter',
             build = ':TSUpdate',
+            lazy = false,
             config = function()
-                require'nvim-treesitter.configs'.setup {
-                    ensure_installed = { "c", "python", "rust", "go", "javascript", "html", "css", "lua", "vim", "vimdoc", "query", "bash" },
+                require('nvim-treesitter.configs').setup {
+                    ensure_installed = { 'c', 'python', 'rust', 'go', 'javascript', 'html', 'css', 'lua', 'vim', 'vimdoc', 'query', 'bash' },
                     sync_install = false,
                     auto_install = true,
                     highlight = { enable = true },
                     indent = { enable = true },
                 }
             end,
-            lazy = false,
         },
 
         -- [[ Tools ]]
-        -- Display pending keybindings
+        -- Display keybind options for a started command
         {
-            "folke/which-key.nvim",
-            event = "VeryLazy",
+            'folke/which-key.nvim',
+            event = 'VeryLazy',
             init = function()
                 vim.o.timeout = true
                 vim.o.timeoutlen = 300
             end,
             config = function()
-                local wk = require("which-key")
-                wk.register(mappings, opts)
+                require('which-key').register(mappings, opts)
             end,
         },
 
-        -- Telescope 
+        -- Fuzzy finder over lists 
         {
             'nvim-telescope/telescope.nvim', tag = '0.1.4',
 	    lazy = false,
             dependencies = { 'nvim-lua/plenary.nvim' },
             config = function ()
-                return {
-                'nvim-telescope/telescope.nvim', tag = '0.1.4',
-                dependencies = { 'nvim-lua/plenary.nvim' }
-                }
+                local builtin = require('telescope.builtin')
+                vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
+                vim.keymap.set('n', '<leader>fa', function() builtin.find_files( { hidden = true }, { no_ignore = true } ) end, { desc = "Find all" })
+                vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Fing with Grep" })
+                vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find buffer" })
+                vim.keymap.set('n', '<leader>fz', builtin.current_buffer_fuzzy_find, { desc = "Find in Buffer" })               
+                vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Find Help" })               
             end,
         },
         
         -- [[ Functional ]]
         -- Automatic bracket closer
-        {
-            'jiangmiao/auto-pairs'
-        },
+        { 'jiangmiao/auto-pairs' },
         -- Edit brackets
-        {
-            'tpope/vim-surround'
-        },
+        { 'tpope/vim-surround' },
         -- Comment stuff out
-        {
-            'tpope/vim-commentary'
-        },
+        { 'tpope/vim-commentary' },
+
 
         -- Autocompletion
         { 
@@ -140,7 +131,7 @@ return
                 cmp.setup({
                     snippet = {
                         expand = function(args)
-                            vim.fn["vsnip#anonymous"](args.body)
+                            vim.fn['vsnip#anonymous'](args.body)
                         end,
                     },
 
@@ -155,8 +146,8 @@ return
                         ['<Tab>'] = cmp.mapping(function(fallback)
                             if cmp.visible() then
                                 cmp.select_next_item()
-                            elseif vim.fn["vsnip#jumpable"](1) == 1 then 
-                                feedkey("<Plug>(vsnip-jump-next)", "")
+                            elseif vim.fn['vsnip#jumpable'](1) == 1 then 
+                                feedkey('<Plug>(vsnip-jump-next)', "")
                             else
                                 fallback()
                             end
@@ -164,8 +155,8 @@ return
                         ['<S-Tab>'] = cmp.mapping(function(fallback)
                             if cmp.visible() then
                                 cmp.select_prev_item()
-                            elseif vim.fn["vsnip#jumpable"](-1) == 1 then 
-                                feedkey("<Plug>(vsnip-jump-prev)", "")
+                            elseif vim.fn['vsnip#jumpable'](-1) == 1 then 
+                                feedkey('<Plug>(vsnip-jump-prev)', "")
                             else
                                 fallback()
                             end
