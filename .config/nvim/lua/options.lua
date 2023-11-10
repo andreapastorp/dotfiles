@@ -23,7 +23,11 @@ vim.o.termguicolors = true
 vim.o.scrolloff = 10
 
 -- buffer settings
-vim.o.completeopt = "noinsert,menuone,noselect"
+vim.o.completeopt = 'noinsert,menuone,noselect'
 
 -- system clipboard
 vim.o.clipboard = "unnamedplus"
+
+-- backspace
+vim.o.backspace = 'eol', 'start', 'indent'
+

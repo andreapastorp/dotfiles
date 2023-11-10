@@ -83,9 +83,13 @@ return
                 vim.o.timeoutlen = 300
             end,
             config = function()
-                require('which-key').register(mappings, opts)
-            end,
-        },
+                require('which-key').register {
+                    ['<leader>'] = {
+                        f = { name = '+find',},
+                    },
+                }
+        end,
+    },
 
         -- Fuzzy finder over lists 
         {
