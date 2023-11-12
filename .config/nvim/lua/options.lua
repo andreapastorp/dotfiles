@@ -29,5 +29,5 @@ vim.o.completeopt = 'noinsert,menuone,noselect'
 vim.o.clipboard = "unnamedplus"
 
 -- backspace
-vim.o.backspace = 'eol', 'start', 'indent'
+vim.o.backspace = 'eol,start,indent'
 
