@@ -108,8 +108,14 @@ return
         },
         
         -- [[ Functional ]]
-        -- Automatic bracket closer
-        { 'jiangmiao/auto-pairs' },
+        -- Auto brackets
+        { 
+            'windwp/nvim-autopairs', 
+            config = function ()
+                require("nvim-autopairs").setup {}
+            end,
+        },
+
         -- Edit brackets
         { 'tpope/vim-surround' },
         -- Comment stuff out
@@ -132,6 +138,10 @@ return
             },
             config = function()
                 local cmp = require 'cmp'
+
+                local feedkey = function(key, mode)
+                    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+                end
 
                 cmp.setup({
                     snippet = {
