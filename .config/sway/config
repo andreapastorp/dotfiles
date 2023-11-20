@@ -60,10 +60,13 @@ output eDP-1 scale 1.5
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-input "1452:628:Apple_Inc._Apple_Internal_Keyboard_/_Trackpad" {
-  # Capslock key should work as escape key
-  # xkb_options caps:escape
+input type:keyboard {
   repeat_delay 250
+}
+
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
 }
 
 ### Key bindings
@@ -215,7 +218,7 @@ bindsym $mod+r mode "resize"
     bindgesture swipe:left workspace next
 
 #
-# brightness 
+# Brightness 
 #
     bindsym XF86MonBrightnessDown exec brightnessctl set 5-
     bindsym XF86MonBrightnessUp exec brightnessctl set +5
@@ -223,8 +226,9 @@ bindsym $mod+r mode "resize"
 #
 # Volume
 #
-    bindsym XF86AudioLowerVolume exec pamixer -d 5
+    bindsym XF86AudioLowerVolume exec pamixer -d 5 
     bindsym XF86AudioRaiseVolume exec pamixer -i 5
+    bindsym XF86AudioMute exec pamixer -t 
 
 #
 # swaylock
@@ -238,6 +242,14 @@ bindsym $mod+r mode "resize"
     bindsym XF86AudioPause exec playerctl pause
     bindsym XF86AudioNext exec playerctl next
     bindsym XF86AudioPrev exec playerctl previous
+
+#
+# Screenshots
+#
+    bindsym Mod4+p       exec grimshot --notify save active
+    bindsym Mod4+Shift+p exec grimshot --notify save area
+    bindsym Mod4+Mod1+p  exec grimshot --notify save output
+    bindsym Mod4+Ctrl+p  exec grimshot --notify save window
 
 
 ### Status Bar:
