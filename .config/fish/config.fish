@@ -1,3 +1,5 @@
+source ~/.config/fish/conf.d/abbr.fish
+
 # fzf:
 # - set the default options to have the search bar on top
 # - make it use ripgrep instead of find + show hidden folders
