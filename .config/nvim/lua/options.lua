@@ -14,9 +14,6 @@ vim.o.autoindent = true
 -- keep file history
 vim.o.undofile = true
 
--- search settings
-vim.o.ignorecase = true
-
 -- appearance
 vim.o.termguicolors = true
 
