@@ -91,10 +91,12 @@ return
                 require('which-key').register {
                     ['<leader>'] = {
                         f = { name = '+find',},
+                        d = { name = '+documentation',},
+                        c = { name = '+code action',},
                     },
                 }
-        end,
-    },
+            end,
+        },
 
         -- Fuzzy finder over lists 
         {
@@ -103,12 +105,12 @@ return
             dependencies = { 'nvim-lua/plenary.nvim' },
             config = function ()
                 local builtin = require('telescope.builtin')
-                vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
-                vim.keymap.set('n', '<leader>fa', function() builtin.find_files( { hidden = true }, { no_ignore = true } ) end, { desc = "Find all" })
-                vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Fing with Grep" })
-                vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find buffer" })
-                vim.keymap.set('n', '<leader>fz', builtin.current_buffer_fuzzy_find, { desc = "Find in Buffer" })               
-                vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Find Help" })               
+                vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find files' })
+                vim.keymap.set('n', '<leader>fa', function() builtin.find_files( { hidden = true }, { no_ignore = true } ) end, { desc = 'Find all' })
+                vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Fing with Grep' })
+                vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find buffers' })
+                vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, { desc = 'Find in Current file' })               
+                vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Find Help' })               
             end,
         },
         
@@ -225,17 +227,24 @@ return
 
                         -- Buffer local mappings.
                         -- See `:help vim.lsp.*` for documentation on any of the below functions
-                        local opts = { buffer = ev.buf }
-                        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-                        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-                        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-                        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-                        vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-                        vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-                        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+                        -- local opts = { buffer = ev.buf }
+                        local nmap = function(keys, func, desc)
+                            if desc then
+                                desc = 'LSP: ' .. desc
+                            end
+
+                            vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+                        end
+                        nmap('<leader>dD', vim.lsp.buf.declaration, 'Go to Declaration')
+                        nmap('<leader>dd', vim.lsp.buf.definition, 'Go to Definition')
+                        nmap('<leader>dK', vim.lsp.buf.hover, 'Hover Documentation')
+                        nmap('<leader>dr', vim.lsp.buf.references, 'Go to References')
+                        nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+                        nmap('<leader>rn', vim.lsp.buf.rename, 'Rename')
+                        nmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
                         vim.keymap.set('n', '<space>f', function()
                             vim.lsp.buf.format { async = true }
-                        end, opts)
+                        end, {buffer = ev.buf, desc = 'Format buffer with LSP'})
                     end,
                 })
 
