@@ -62,6 +62,15 @@ return
             end,
         },
 
+        -- Todo Highlighting
+        {
+            'folke/todo-comments.nvim',
+            config = function()
+                require('todo-comments').setup()
+                vim.keymap.set('n', '<leader>ft', vim.cmd.TodoTelescope, { desc = 'Find Todo'})
+            end,
+        },
+
         -- Highlighting 
         {
             'nvim-treesitter/nvim-treesitter',
@@ -131,6 +140,38 @@ return
         { 'tpope/vim-commentary' },
         -- Highlight references
         { 'RRethy/vim-illuminate' },
+
+        -- Debugger
+        {
+            'rcarriga/nvim-dap-ui',
+            config = function()
+                require("dapui").setup()
+            end,
+
+            dependencies = {
+                'mfussenegger/nvim-dap',
+            },
+
+            config = function()
+                local dap = require('dap')
+                dap.adapters.gdb = {
+                    type = "executable",
+                    command = "gdb",
+                    args = { "-i", "dap" }
+                }
+                dap.configurations.c = {
+                    {
+                        name = "Launch",
+                        type = "gdb",
+                        request = "launch",
+                        program = function()
+                            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                        end,
+                        cwd = "${workspaceFolder}",
+                    },
+                }
+            end,
+        },
 
         -- Autocompletion
         { 
@@ -248,7 +289,7 @@ return
                     end,
                 })
 
-                -- Set up lspconfig.
+                -- Set up lspconfig
                 local capabilities = require('cmp_nvim_lsp').default_capabilities()
                 local enabled_lsps = {'clangd', 'gopls'}
                 for _, lsp in pairs(enabled_lsps) do

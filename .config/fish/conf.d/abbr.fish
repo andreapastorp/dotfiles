@@ -13,3 +13,6 @@ abbr --add gr 'git remote'
 abbr --add gb 'git branch'
 abbr --add gd 'git diff'
 abbr --add gl 'git log'
+
+# kubernetes
+abbr --add kc 'kubectl'
