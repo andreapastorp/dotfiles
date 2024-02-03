@@ -11,6 +11,12 @@ return
             end,
         },
 
+        { 
+            'Rigellute/rigel',
+            name = 'rigel',
+        },
+
+
         -- Indent line guides
         { 'lukas-reineke/indent-blankline.nvim',
             main = 'ibl',
