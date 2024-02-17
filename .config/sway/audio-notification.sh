@@ -8,7 +8,7 @@ get_volume()
 
 notify_user()
 {
-	notify-send -h string:x-canonical-private-synchronous:sys-notify "Volume: $(get_volume)%" -h "int:value:$(get_volume)"
+	notify-send -h string:x-canonical-private-synchronous:sys-notify "  $(get_volume)%" -h "int:value:$(get_volume)"
 }
 
 case $1 in
@@ -26,7 +26,6 @@ case $1 in
 
 	mute)
 		pamixer -t
-		notify-send "Mute" 
+		notify-send -h string:x-canonical-private-synchronous:sys-notify ""
 		;;
-
 esac
