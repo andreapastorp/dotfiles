@@ -224,15 +224,15 @@ bindsym $mod+r mode "resize"
 #
 # Brightness 
 #
-    bindsym XF86MonBrightnessDown exec brightnessctl set 5-
-    bindsym XF86MonBrightnessUp exec brightnessctl set +5
+    bindsym XF86MonBrightnessDown exec ~/.config/sway/scripts/brightness-notification.sh decrease
+    bindsym XF86MonBrightnessUp exec ~/.config/sway/scripts/brightness-notification.sh increase
 
 #
 # Volume
 #
-    bindsym XF86AudioLowerVolume exec ~/.config/sway/audio-notification.sh decrease
-    bindsym XF86AudioRaiseVolume exec ~/.config/sway/audio-notification.sh increase
-    bindsym XF86AudioMute exec ~/.config/sway/audio-notification.sh mute
+    bindsym XF86AudioLowerVolume exec ~/.config/sway/scripts/audio-notification.sh decrease
+    bindsym XF86AudioRaiseVolume exec ~/.config/sway/scripts/audio-notification.sh increase
+    bindsym XF86AudioMute exec ~/.config/sway/scripts/audio-notification.sh mute
 
 #
 # Lock screen
