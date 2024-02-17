@@ -230,9 +230,9 @@ bindsym $mod+r mode "resize"
 #
 # Volume
 #
-    bindsym XF86AudioLowerVolume exec pamixer -d 5 
-    bindsym XF86AudioRaiseVolume exec pamixer -i 5
-    bindsym XF86AudioMute exec pamixer -t 
+    bindsym XF86AudioLowerVolume exec ~/.config/sway/audio-notification.sh decrease
+    bindsym XF86AudioRaiseVolume exec ~/.config/sway/audio-notification.sh increase
+    bindsym XF86AudioMute exec ~/.config/sway/audio-notification.sh mute
 
 #
 # Lock screen
@@ -278,9 +278,9 @@ for_window [app_id="wdisplays"] floating enable
 # gaps inner 8
 smart_borders on
 default_border pixel 2
-client.focused b2ceee b2ceee 011627 ff5874
-client.focused_inactive 9ca1aa 1d3b53 d6deeb
-client.unfocused 9ca1aa 1d3b53 d6deeb
+client.focused #042B4E #042B4E #ffffff #ff5874
+client.focused_inactive #011627 #011627 #ffffff #011627
+client.unfocused #011627 #011627 #ffffff #011627
 
 ### Autostart applications
 #
