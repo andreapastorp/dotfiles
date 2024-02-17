@@ -4,7 +4,7 @@
 
 window {
     margin: 0px;
-    background-color: #1d3b53;
+    background-color: #24567F;
     border-radius: 0px;
     color: #e0def4;
     font-family: 'Fira Code Nerd Font';
@@ -16,8 +16,7 @@ window {
     border-radius: 0px;
     border: none;
     border-color: #b2ceee;
-    color: #d6deeb;
-    background-color: #315a7a;
+    background-color: #296596;
     box-shadow: none;    
 }
 
@@ -31,15 +30,13 @@ window {
 } 
 
 #inner-box {
-    margin: 5px;
+    margin-top: 16px;
     border: none;
-    background-color: #1d3b53;
-    color: #191724;
     border-radius: 0px;
 }
 
 #outer-box {
-    margin: 15px;
+    margin: 16px;
     border: none;
 }
 
@@ -56,7 +53,6 @@ window {
 
 #entry:selected {
     background-color: #b2ceee;
-    color: #080808;
     border-radius: 0px;
     outline: none;
 }
@@ -66,5 +62,5 @@ window {
 }
 
 #entry image {
-    padding-right: 10px;
+    padding: 10px;
 }

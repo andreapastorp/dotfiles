@@ -5,13 +5,13 @@
   border: none;
   border-radius: 0;
   font-family: firacode nerd font, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   color: white;
   box-shadow: none;
 }
 
 window#waybar {
-  background: rgba(1, 22, 39,0.5);
+  background: rgba(1, 22, 39,1);
 }
 
 tooltip {
@@ -27,6 +27,7 @@ tooltip label {
 
 #workspaces button {
   padding: 0 20px 0 20px;
+  transition: linear 0.2s;
 }
 
 #workspaces button:hover {

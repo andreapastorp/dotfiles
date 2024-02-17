@@ -1,0 +1,10 @@
+background-color=#24567F
+progress-color=#296596
+padding=16
+border-color=#011627
+border-size=0
+margin=8
+border-radius=4
+actions=1
+default-timeout=2000
+layer=overlay
