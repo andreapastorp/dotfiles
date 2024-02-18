@@ -15,6 +15,7 @@
     },
 
     "pulseaudio": {
+        "tooltip": false,
         "format": "{volume}% {icon}",
         "format-muted": "",
         "format-icons": {
@@ -24,6 +25,7 @@
     },
 
     "backlight": {
+        "tooltip": false,
         "device": "acpi_video",
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", ""],
@@ -48,11 +50,12 @@
     },
 
     "network": {
-	"format-wifi": "{icon} {signalStrength}%",
-	"format-ethernet": "{ipaddr}/{cidr} 󰊗",
-	"format-disconnected": "󰤮",
-	"max-length": 50,
-	"format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"]
+        "tooltip": false,
+        "format-wifi": "{icon}",
+        "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+        "format-disconnected": "󰤮",
+        "max-length": 50,
+        "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"]
     },
 
     "tray": {

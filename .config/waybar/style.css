@@ -31,40 +31,40 @@ tooltip label {
 }
 
 #workspaces button:hover {
-    background: rgba(178, 206, 238, 0.1);
-    border: none;
-    }
+  background: rgba(178, 206, 238, 0.1);
+  border: none;
+}
 
 #workspaces button.focused {
-	background: rgba(178, 206, 238, 0.3);
-	border-bottom: 3px solid rgba(178,206,238,1);
-    }
+  background: rgba(178, 206, 238, 0.3);
+  border-bottom: 3px solid rgba(178,206,238,1);
+}
 
 #mode, #bluetooth, #pulseaudio, #backlight, #clock, #battery, #network {
   padding: 0 10px;
 }
 
 #mode {
-	background: @redbright;
-	border-radius: 28;
-	margin: 5 25px 5 5;
+  background: @redbright;
+  border-radius: 28;
+  margin: 5 25px 5 5;
 }
 
 @keyframes shake {
-    to {
-    	padding: 7px;
-    }
+  to {
+    padding: 7px;
+  }
 }
 
 #battery.warning:not(.charging) {
-    color: @redbright;
+  color: @redbright;
 }
 
 #battery.critical:not(.charging) {
-    color: @redbright;
-    animation-name: shake;
-    animation-duration: 0.2s;
-    animation-timing-function:linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  color: @redbright;
+  animation-name: shake;
+  animation-duration: 0.2s;
+  animation-timing-function:linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
