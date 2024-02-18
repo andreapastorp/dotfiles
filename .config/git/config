@@ -1,0 +1,16 @@
+[user]
+	name = Andrea
+
+[core]
+  editor = nvim
+
+[http]
+	sslverify = false
+[help]
+	autocorrect = prompt
+[merge]
+	conflictstyle = zdiff3
+[init]
+	defaultBranch = main
+[commit]
+	verbose = true
