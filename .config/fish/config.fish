@@ -8,7 +8,9 @@ source ~/.config/fish/conf.d/abbr.fish
 set -x FZF_DEFAULT_OPTS "--layout=reverse"
 set -x FZF_CTRL_T_COMMAND 'rg --hidden --files'
 
-fzf_key_bindings
+if functions -q fzf_key_bindings
+    fzf_key_bindings
+end
 bind \cr history-pager
 
 # disable fish startup message

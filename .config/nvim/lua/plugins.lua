@@ -128,24 +128,18 @@ return
                 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Find Help' })               
             end,
         },
-        
-        -- [[ Functional ]]
-        -- Auto brackets
-        { 
-            'windwp/nvim-autopairs', 
-            config = function ()
-                require("nvim-autopairs").setup {}
-            end,
-        },
 
-        -- Edit brackets
-        { 'tpope/vim-surround' },
-        -- Automatically adjust indentation settings
-        { 'tpope/vim-sleuth' },
-        -- Comment stuff out
-        { 'tpope/vim-commentary' },
-        -- Highlight references
-        { 'RRethy/vim-illuminate' },
+        -- Visual undo tree
+        {
+            'debugloop/telescope-undo.nvim',
+            dependencies = { 'nvim-telescope/telescope.nvim' },
+            config = function()
+                vim.keymap.set('n', '<leader>u', '<cmd>Telescope undo<cr>', { desc = "undo history" })
+                require('telescope').setup()
+                require('telescope').load_extension('undo')
+            end,
+
+        },
 
         -- Debugger
         {
@@ -178,6 +172,24 @@ return
                 }
             end,
         },
+
+        -- [[ Functional ]]
+        -- Auto brackets
+        {
+            'windwp/nvim-autopairs',
+            config = function ()
+                require('nvim-autopairs').setup()
+            end,
+        },
+
+        -- Edit brackets
+        { 'tpope/vim-surround' },
+        -- Automatically adjust indentation settings
+        { 'tpope/vim-sleuth' },
+        -- Comment stuff out
+        { 'tpope/vim-commentary' },
+        -- Highlight references
+        { 'RRethy/vim-illuminate' },
 
         -- Autocompletion
         { 
