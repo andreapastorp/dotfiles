@@ -309,7 +309,7 @@ return
 
                 -- Set up lspconfig
                 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-                local enabled_lsps = {'clangd', 'gopls'}
+                local enabled_lsps = {'clangd', 'gopls', 'pylsp'}
                 for _, lsp in pairs(enabled_lsps) do
                     require('lspconfig')[lsp].setup {
                         capabilities = capabilities
