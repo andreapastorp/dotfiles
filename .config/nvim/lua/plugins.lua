@@ -84,7 +84,7 @@ return
             lazy = false,
             config = function()
                 require('nvim-treesitter.configs').setup {
-                    ensure_installed = { 'c', 'python', 'rust', 'go', 'javascript', 'html', 'css', 'lua', 'vim', 'vimdoc', 'query', 'bash' },
+                    ensure_installed = { 'c', 'python', 'rust', 'go', 'javascript', 'html', 'css', 'lua', 'vim', 'vimdoc', 'query', 'bash', 'fish' },
                     sync_install = false,
                     auto_install = true,
                     highlight = { enable = true },
@@ -205,13 +205,14 @@ return
                 'rafamadriz/friendly-snippets',
             },
             config = function()
-                local cmp = require 'cmp'
+                local cmp = require('cmp')
 
                 local feedkey = function(key, mode)
                     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
                 end
 
                 cmp.setup({
+
                     snippet = {
                         expand = function(args)
                             vim.fn['vsnip#anonymous'](args.body)
@@ -225,7 +226,7 @@ return
                         ['<C-d>'] = cmp.mapping.scroll_docs(4),
                         ['<C-Space>'] = cmp.mapping.complete(),
                         ['<C-e>'] = cmp.mapping.abort(),
-                        ['<CR>'] = cmp.mapping.confirm({select = true,}),
+                        ['<CR>'] = cmp.mapping.confirm(),
                         ['<Tab>'] = cmp.mapping(function(fallback)
                             if cmp.visible() then
                                 cmp.select_next_item()
@@ -309,7 +310,7 @@ return
 
                 -- Set up lspconfig
                 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-                local enabled_lsps = {'clangd', 'gopls', 'pylsp'}
+                local enabled_lsps = {'clangd', 'gopls', 'pylsp', 'html'}
                 for _, lsp in pairs(enabled_lsps) do
                     require('lspconfig')[lsp].setup {
                         capabilities = capabilities
