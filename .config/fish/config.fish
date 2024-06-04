@@ -21,3 +21,6 @@ alias config='/usr/bin/git --git-dir=$HOME/Projects/.dotfiles/ --work-tree=$HOME
 
 # set $SHELL to show fish
 set -x SHELL /usr/bin/fish
+
+# set #EDITOR
+set -x EDITOR nvim
