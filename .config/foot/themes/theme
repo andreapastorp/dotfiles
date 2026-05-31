@@ -3,10 +3,10 @@
 # https://github.com/bluz71/vim-nightfly-guicolors
 # and https://sr.ht/~ayushnix
 
-[cursor]
-color = 080808 9e9e9e
 
-[colors]
+[colors-dark]
+cursor=080808 9e9e9e
+
 foreground = b2b2b2
 background = 010B14
 
