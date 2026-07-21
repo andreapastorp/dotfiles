@@ -16,8 +16,9 @@ set $term foot
 # on the original workspace that the command was run on.
 set $menu wofi --show drun | xargs swaymsg exec --
 
-# Youre preferred clipboard manager
+# Your preferred clipboard manager
 exec wl-paste --watch cliphist store
+exec wl-paste --primary --watch wl-copy
 set $clipboard cliphist list | wofi --show=dmenu | cliphist decode | wl-copy && wtype -M ctrl v -m ctrl
 
 
@@ -71,6 +72,7 @@ input type:keyboard {
 input type:touchpad {
     tap enabled
     natural_scroll enabled
+    tap_button_map lrm
 }
 
 ### Key bindings
