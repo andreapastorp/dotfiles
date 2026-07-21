@@ -5,6 +5,7 @@ Dotfiles for a bunch of useful stuff.
 - WM : sway
 - Bar: waybar
 - Lockscreen : swaylock
+- Display Manager: ly
 - Launcher: wofi
 - Shell : fish
 - Terminal : foot
