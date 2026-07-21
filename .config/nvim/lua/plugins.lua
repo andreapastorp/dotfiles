@@ -11,11 +11,10 @@ return
             end,
         },
 
-        { 
+        {
             'Rigellute/rigel',
             name = 'rigel',
         },
-
 
         -- Indent line guides
         { 'lukas-reineke/indent-blankline.nvim',
@@ -26,7 +25,7 @@ return
         },
 
         -- Status line
-        { 
+        {
             'nvim-lualine/lualine.nvim',
             config = function()
                 require('lualine').setup {
@@ -36,6 +35,7 @@ return
                 }
             end,
         },
+
 
         -- [[ Informative ]]
         -- Color highlighter
@@ -48,7 +48,7 @@ return
 
         -- Scrollbar
         {
-            'petertriho/nvim-scrollbar', 
+            'petertriho/nvim-scrollbar',
             config = function()
                 local colors = require('nightfly').palette
                 require('scrollbar').setup {
@@ -115,7 +115,7 @@ return
 
         -- Fuzzy finder over lists 
         {
-            'nvim-telescope/telescope.nvim', tag = '0.1.4',
+            'nvim-telescope/telescope.nvim', version = '*',
 	    lazy = false,
             dependencies = { 'nvim-lua/plenary.nvim' },
             config = function ()
@@ -123,9 +123,10 @@ return
                 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find files' })
                 vim.keymap.set('n', '<leader>fa', function() builtin.find_files( { hidden = true }, { no_ignore = true } ) end, { desc = 'Find all' })
                 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Fing with Grep' })
-                vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find buffers' })
-                vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, { desc = 'Find in Current file' })               
-                vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Find Help' })               
+                vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find Buffers' })
+                vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, { desc = 'Find in Current file' })
+                vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Find Help' })
+                vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Find Diagnostics' })
             end,
         },
 
@@ -192,7 +193,7 @@ return
         { 'RRethy/vim-illuminate' },
 
         -- Autocompletion
-        { 
+        {
             'hrsh7th/nvim-cmp',
             dependencies = {
                 'neovim/nvim-lspconfig',
@@ -230,7 +231,7 @@ return
                         ['<Tab>'] = cmp.mapping(function(fallback)
                             if cmp.visible() then
                                 cmp.select_next_item()
-                            elseif vim.fn['vsnip#jumpable'](1) == 1 then 
+                            elseif vim.fn['vsnip#jumpable'](1) == 1 then
                                 feedkey('<Plug>(vsnip-jump-next)', "")
                             else
                                 fallback()
@@ -239,7 +240,7 @@ return
                         ['<S-Tab>'] = cmp.mapping(function(fallback)
                             if cmp.visible() then
                                 cmp.select_prev_item()
-                            elseif vim.fn['vsnip#jumpable'](-1) == 1 then 
+                            elseif vim.fn['vsnip#jumpable'](-1) == 1 then
                                 feedkey('<Plug>(vsnip-jump-prev)', "")
                             else
                                 fallback()
@@ -251,7 +252,7 @@ return
                         {
                             { name = 'nvim_lsp' },
                             { name = 'vsnip' },
-                        }, 
+                        },
                         {
                             { name = 'path' }
                         },
@@ -310,13 +311,35 @@ return
 
                 -- Set up lspconfig
                 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-                local enabled_lsps = {'clangd', 'gopls', 'pylsp', 'html'}
-                for _, lsp in pairs(enabled_lsps) do
-                    require('lspconfig')[lsp].setup {
-                        capabilities = capabilities
-                    }
-                end
+                local enabled_lsps = {'clangd', 'gopls', 'pylsp', 'html', 'lua_ls'}
+                vim.lsp.config('*', {
+                    capabilities = capabilities
+                })
+                -- Lua/LOVE specific config
+                vim.lsp.config('lua_ls', {
+                    settings = {
+                        Lua = {
+                            runtime = { version = 'LuaJIT' },
+                            workspace = {
+                                library = { '${3rd}/love2d/library' },
+                                checkThirdParty = false,
+                            },
+                        },
+                    },
+                })
+                vim.lsp.enable(enabled_lsps)
             end,
+        },
+
+        -- Configure LuaLS for editing Neovim config files
+        {
+            'folke/lazydev.nvim',
+            ft = 'lua',
+            opts = {
+                library = {
+                    { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+                },
+            },
         },
     }
 
